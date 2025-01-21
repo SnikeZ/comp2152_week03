@@ -1,10 +1,9 @@
 import random
-
 BREAK_ROUND = 11
 
-dices = [1, 2, 3, 4, 5, 6]
+# Setup
+diceOptions = list(range(1, 7))
 weapons = ['Fist', 'Knife', 'Club', 'Gun', 'Bomb', 'Nuclear Bomb']
-
 print("Available weapons: ")
 for i in weapons:
     print(i)
@@ -41,19 +40,18 @@ while True:
 
     break
 
-
-for i in range(20):
-    if i == BREAK_ROUND - 1:
+# Battle
+for j in range(1, 21, 2):
+    if j == BREAK_ROUND :
         print(f"Battle Truce declared in Round {BREAK_ROUND}. Game Over!")
         break
 
     hero_roll = random.randint(0, 5)
     monster_roll = random.randint(0, 5)
 
-    hero_total_strength = combat_strength + hero_roll
-    monster_total_strength = m_combat_strength + monster_roll
-
-    print(f"Round {i + 1}: Hero rolled {hero_roll + 1}, Monster rolled {monster_roll + 1}.")
+    hero_total_strength, monster_total_strength = combat_strength + hero_roll, m_combat_strength + monster_roll
+    
+    print(f"Round {j + 1}: Hero rolled {hero_roll + 1}, Monster rolled {monster_roll + 1}.")
     print(f"Hero selected {weapons[hero_roll]}, Monster selected {weapons[monster_roll]}.")
     print(f"Hero total strength: {hero_total_strength}, Monster total strength: {monster_total_strength}.")
 
